@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música Shuffle</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div class="player-container">
+    <!-- Título con imagen animada -->
+    <div class="title-container">
+        <h1>Song's that remind me of you...</h1>
+        <img class="floating-image" src="img/logo.png" alt="Logo Musical">
+    </div>
+
+    <!-- Portada y reproductor -->
+    <div class="cover-container">
+        <img id="cover" src="img/cover1.jpg" alt="Portada de la canción">
+    </div>
+    <h3 id="song-title">Canción 1</h3>
+    <audio id="audio-player" controls>
+        <source id="audio-source" src="music/song1.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <br>
+    <button id="shuffle-button">Shuffle</button>
+</div>
+
+<script>
+    const songs = [
+        {
+            title: "Sweater Weather",
+            cover: "img/cover1.jpg",
+            audio: "music/song1.mp3"
+        },
+        {
+            title: "Mr. Loverman",
+            cover: "img/cover2.jpg",
+            audio: "music/song2.mp3"
+        },
+        {
+            title: "Tutank'mon",
+            cover: "img/cover3.jpg",
+            audio: "music/song3.mp3"
+        },
+        {
+            title: "Burning Love",
+            cover: "img/cover4.jpg",
+            audio: "music/song4.mp3"
+        },
+        {
+            title: "Can't help falling in love",
+            cover: "img/cover5.jpg",
+            audio: "music/song5.mp3"
+        },
+        {
+            title: "Shivers",
+            cover: "img/cover6.jpg",
+            audio: "music/song6.mp3"
+        },
+        {
+            title: "Shinunoga E-Wa",
+            cover: "img/cover7.jpg",
+            audio: "music/song7.mp3"
+        },
+        {
+            title: "Hug me",
+            cover: "img/cover8.jpg",
+            audio: "music/song8.mp3"
+        },
+        {
+            title: "Hold me tight",
+            cover: "img/cover9.jpg",
+            audio: "music/song9.mp3"
+        },
+        {
+            title: "The Reason",
+            cover: "img/cover10.jpg",
+            audio: "music/song10.mp3"
+        },
+        {
+            title: "Because I'm Stupid",
+            cover: "img/cover11.jpg",
+            audio: "music/song11.mp3"
+        },
+        {
+            title: "Stay",
+            cover: "img/cover12.jpg",
+            audio: "music/song12.mp3"
+        },
+        {
+            title: "The One",
+            cover: "img/cover13.jpg",
+            audio: "music/song13.mp3"
+        },
+        {
+            title: "The first snow",
+            cover: "img/cover14.jpg",
+            audio: "music/song14.mp3"
+        },
+        {
+            title: "All of the stars",
+            cover: "img/cover15.jpg",
+            audio: "music/song15.mp3"
+        }
+    ];
+
+    const coverElement = document.getElementById('cover');
+    const titleElement = document.getElementById('song-title');
+    const audioElement = document.getElementById('audio-player');
+    const audioSource = document.getElementById('audio-source');
+    const shuffleButton = document.getElementById('shuffle-button');
+
+    shuffleButton.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * songs.length);
+        const selectedSong = songs[randomIndex];
+
+        coverElement.src = selectedSong.cover;
+        titleElement.textContent = selectedSong.title;
+        audioSource.src = selectedSong.audio;
+
+        audioElement.load();
+    });
+</script>
+
+</body>
+</html>
